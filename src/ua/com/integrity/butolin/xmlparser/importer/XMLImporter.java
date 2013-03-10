@@ -1,7 +1,6 @@
 package ua.com.integrity.butolin.xmlparser.importer;
 
 import java.io.File;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -28,26 +27,15 @@ public class XMLImporter {
 		    + reverseDate(item.getBirthDate()) + ","
 		    + reverseGender(item.getGender());
 	} catch (JAXBException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
 
 	return stringCSV;
     }
 
-    private String reverseDate(String oldDate) {
-	String newDate = null;
-	SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+    private String reverseDate(Date date) {
 	SimpleDateFormat df2 = new SimpleDateFormat("MM-dd-yyyy");
-	Date date;
-	try {
-	    date = df.parse(oldDate);
-	    newDate = df2.format(date);
-	} catch (ParseException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}
-
+	String newDate = df2.format(date).toString();
 	return newDate;
     }
 

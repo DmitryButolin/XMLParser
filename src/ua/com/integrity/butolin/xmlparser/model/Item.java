@@ -1,7 +1,10 @@
 package ua.com.integrity.butolin.xmlparser.model;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlRootElement
 public class Item {
@@ -10,7 +13,7 @@ public class Item {
 
     private String lastName;
 
-    private String birthDate;
+    private Date birthDate;
 
     private String gender;
 
@@ -36,12 +39,13 @@ public class Item {
 	this.lastName = lastName;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
 	return birthDate;
     }
 
     @XmlElement
-    public void setBirthDate(String birthDate) {
+    @XmlJavaTypeAdapter(ShortDateFormatter.class)
+    public void setBirthDate(Date birthDate) {
 	this.birthDate = birthDate;
     }
 
