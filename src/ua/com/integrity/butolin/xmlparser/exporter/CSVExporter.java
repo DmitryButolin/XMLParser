@@ -7,7 +7,7 @@ import java.io.Writer;
 public class CSVExporter {
     public static String CSV_FILE_NAME = "result.csv";
 
-    public void SaveStringToCSV(String strToFile) {
+    public void saveStringToCSV(String strToFile) {
 	Writer resultCsv = null;
 	try {
 	    resultCsv = new FileWriter(CSV_FILE_NAME);

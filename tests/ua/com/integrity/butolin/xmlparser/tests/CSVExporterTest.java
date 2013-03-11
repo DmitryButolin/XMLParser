@@ -13,7 +13,7 @@ import org.junit.Test;
 import ua.com.integrity.butolin.xmlparser.exporter.CSVExporter;
 
 public class CSVExporterTest {
-    String getStringFromCsv = null;
+    String actualStringFromCsv = null;
 
     public String readCSVFile() {
 	BufferedReader reader;
@@ -21,12 +21,12 @@ public class CSVExporterTest {
 	try {
 	    reader = new BufferedReader(new FileReader(
 		    CSVExporter.CSV_FILE_NAME));
-	    getStringFromCsv = reader.readLine();
+	    actualStringFromCsv = reader.readLine();
 	    reader.close();
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
-	return getStringFromCsv;
+	return actualStringFromCsv;
     }
 
     @Test
@@ -36,10 +36,10 @@ public class CSVExporterTest {
 	    file.delete();
 	String strToCSV = "Иван,Иванов,01-12-2000,м";
 	CSVExporter csvExporter = new CSVExporter();
-	csvExporter.SaveStringToCSV(strToCSV);
+	csvExporter.saveStringToCSV(strToCSV);
 	assertTrue(file.exists());
-	getStringFromCsv = readCSVFile();
-	assertEquals(strToCSV, getStringFromCsv);
+	actualStringFromCsv = readCSVFile();
+	assertEquals(strToCSV, actualStringFromCsv);
     }
 
 }

@@ -14,7 +14,7 @@ public class Parser {
     public static void main(String[] args) {
 
 	Parser parser = new Parser();
-	System.out.println("Введите имя файла");
+	System.out.println("Enter the file name");
 	String xmlFileName = parser.getFileName();
 	parser.xmlFile = parser.testFileToExist(xmlFileName);
 
@@ -22,8 +22,8 @@ public class Parser {
 	String stringToCSV = importer.parsingXMLToString(parser.xmlFile);
 
 	CSVExporter exporter = new CSVExporter();
-	exporter.SaveStringToCSV(stringToCSV);
-	System.out.println("Файл result.csv создан");
+	exporter.saveStringToCSV(stringToCSV);
+	System.out.println("Created result.csv file");
 
     }
 
@@ -31,7 +31,7 @@ public class Parser {
 	xmlFile = new File(xmlFileString);
 	if (!xmlFile.exists()) {
 	    System.out
-		    .println("Такого файла не существует, введите заново имя файла:");
+		    .println("The file does not exist, re-enter the file name:");
 	    xmlFileString = getFileName();
 	    testFileToExist(xmlFileString);
 	}
